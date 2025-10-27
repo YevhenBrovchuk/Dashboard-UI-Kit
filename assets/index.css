@@ -145,11 +145,25 @@ meter {
   display: none;
 }
 
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.66;
+  letter-spacing: 0.02em;
+}
+
 body {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0.03em;
+}
+
+.menu-btn, .menu-link {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: 0.04em;
 }
 
 body {
@@ -200,12 +214,63 @@ summery {
   grid-template-areas: "welcome" "co-workers" "tasks" "reports";
 }
 
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 8px 12px;
+  color: #fafafb;
+  border-radius: 12px;
+  transition-property: background-color, color, box-shadow;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+  font: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  margin: 0;
+  overflow: visible;
+  cursor: pointer;
+}
+.btn .btn-inner {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4285714286;
+  letter-spacing: 0.0357142857em;
+}
+.btn .btn-icon {
+  fill: currentColor;
+}
+
+/*==Primary==*/
+.btn--primary {
+  background-color: #f07f2e;
+}
+.btn--primary:active {
+  background-color: #d14a00;
+}
+.btn--primary[disabled] {
+  background-color: #b5b5be;
+}
+
 .welcome {
   grid-area: welcome;
 }
 
+.welcome-btn {
+  display: block;
+  margin: 0 auto;
+}
+
 .co-workers {
   grid-area: co-workers;
+}
+
+.co-workers-btn {
+  display: block;
+  margin: 0 auto;
 }
 
 .tasks {
@@ -214,6 +279,95 @@ summery {
 
 .reports {
   grid-area: reports;
+}
+
+.menu {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #13131a;
+}
+
+.menu-list {
+  border-top: 1px solid;
+  border-color: #292932;
+}
+
+.menu-link {
+  transition: 300ms ease;
+  transition-property: color;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 20px;
+}
+.menu-link:hover, .menu-link:focus {
+  color: #fafafb;
+}
+.menu-link.current {
+  color: #fafafb;
+}
+.menu-link.current::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: block;
+  width: 4px;
+  height: 32px;
+  border-radius: 0px 100px 100px 0px;
+  background-color: #fafafb;
+}
+
+.menu-icon {
+  fill: currentColor;
+}
+
+.menu-notification {
+  margin-left: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+}
+
+.menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: auto;
+  color: #fafafb;
+}
+.menu-btn-icon {
+  fill: currentColor;
+}
+.sidebar .menu-btn {
+  transition: 600ms ease;
+  transition-property: opacity, transform;
+  transition-delay: 800ms, 600ms;
+  position: absolute;
+  top: 16px;
+  right: -36px;
+}
+.sidebar.is-open .menu-btn {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.notification {
+  flex-shrink: 0;
+  display: block;
+  min-width: 28px;
+  height: 20px;
+  padding: 0 10px;
+  color: #fafafb;
+  border-radius: 12px;
+  background-color: #fc5a5a;
 }
 
 @media only screen and (min-width: 768px) {
@@ -245,6 +399,12 @@ summery {
     grid-template-columns: repeat(auto-fit, minmax(455px, 629px));
     grid-template-areas: "welcome welcome" "co-workers tasks" "co-workers reports";
   }
+  .logo {
+    padding: 16px 20px;
+  }
+  .menu-btn {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 1199.98px) {
@@ -264,5 +424,25 @@ summery {
     opacity: 1;
     pointer-events: initial;
     visibility: visible;
+  }
+}
+
+@media only screen and (mx-width: 1200px) {
+  .menu {
+    transition: 300ms ease;
+    transition-property: transform;
+    max-width: 248px;
+    transform: translateX(-100%);
+  }
+  .sidebar.is-open .menu {
+    transform: translateX(0);
+    transition-delay: 300ms;
+  }
+}
+
+@media (hover: hover) {
+  .btn--primary:hover, .btn--primary:focus {
+    background-color: #f15c27;
+    box-shadow: 0px 4px 10px 0px rgba(240, 127, 46, 0.25);
   }
 }
